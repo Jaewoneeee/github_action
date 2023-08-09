@@ -19,11 +19,14 @@ jobs:
             contents: 'read'
             id-token: 'write'
             issues: 'write'
+            actions: read
+            security-events: write
+
         steps:
             - uses: actions/checkout@v3
             - uses: ArtiomTr/jest-coverage-report-action@v2
               with:
-                  github_token: ${{ secrets.JEST_COVERAGE }}
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
                   base_path: 'src/'
                   threshold: 75
             - name: Setup node.js 18.x
